@@ -1,4 +1,4 @@
-fle=open('mbox-short.txt')
+fle = open('mbox-short.txt')
 for fx in fle:
-    fy=fx.rstrip()
+    fy = fx.rstrip()
     print(fy.upper())
