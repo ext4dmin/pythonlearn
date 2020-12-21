@@ -21,5 +21,15 @@ for str in fh:
     if not str.startswith("From "):continue
     str = str.split()
     tex2list.append(str)
-print(tex2list)
+
 lis2dic = dict()
+for li in tex2list:
+    lis2dic[li[1]] = lis2dic.get(li[1],0) + 1
+
+bigword = None
+bigcount = None
+for word,count in lis2dic.items():
+    if bigword is None or count > bigcount:
+        bigword = word
+        bigcount = count
+print(bigword,bigcount)
