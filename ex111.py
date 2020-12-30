@@ -15,6 +15,6 @@ except:
     print('Sorry, entered file name is not found.')
     quit()
 res = 0
-for i in (re.findall(('[0-9]+'),fh.read())):
+for i in (re.findall((r'\d+'),fh.read())):
     res = res+int(i)
 print(res)
