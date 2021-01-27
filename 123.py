@@ -19,17 +19,16 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 url = input('Enter URL: ')
-repeat_proc = int(input('Enter count repeat: '))
+repeat_proc = int(input('Enter count repeat: '))-1
 position_num = int(input('Enter position: '))-1
 
 html = urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, "html.parser")
-tag = soup('a')
+tag = soup.find_all('a', limit=position_num+1)
 
 while repeat_proc > 0:
     repeat_proc = repeat_proc-1
-    # html = urlopen(url, context=ctx).read()
-    # soup = BeautifulSoup(html, "html.parser")
-    # tag = soup('a')
-print(tag)
-print(tag[position_num].get('href', None)
+    html = urlopen(tag[position_num].get('href'), context=ctx).read()
+    soup = BeautifulSoup(html, "html.parser")
+    tag = soup.find_all('a', limit=position_num+1)
+print(tag[position_num].contents)

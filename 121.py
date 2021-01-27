@@ -8,6 +8,9 @@ while True:
     if len(data) < 1:
         break
     tu = str(data.decode())
-    print(re.findall(('[Last-Modified: ]'),tu))
-
+    print(re.findall(('Last-Modified:.+'),tu))
+    print(re.findall(('ETag:.+'),tu))
+    print(re.findall(('Content-Length:.+'),tu))
+    print(re.findall(('Cache-Control:.+'),tu))
+    print(re.findall(('Content-Type:.+'),tu))
 sock.close()
